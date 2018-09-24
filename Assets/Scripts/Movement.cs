@@ -5,8 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Vector3 velocity, torque;
-    private float maxSpeed = 5;
-    private float speed = 1f;
+    private float maxSpeed = 5, speed = 1f, shotTimer = 0;
 
     [SerializeField]
     Transform firePoint;
@@ -17,7 +16,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private KeyCode Forward, Back, Left, Right, Fire;
 
-    private bool bouncing = false;
+    private bool bouncing = false, canFire = true;
 
     private Rigidbody rb;
 
@@ -32,6 +31,14 @@ public class Movement : MonoBehaviour
     {
         if (!bouncing)
         {
+            shotTimer -= Time.deltaTime;
+
+            if (shotTimer < 0 && !canFire)
+            {
+                canFire = true;
+                shotTimer = 1.5f;
+            }
+
             torque = Vector3.zero;
             velocity = Vector3.zero;
 
@@ -61,19 +68,16 @@ public class Movement : MonoBehaviour
 
             // Limit speed and torque
             velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-            
-            ////if (rb.velocity.normalized == -transform.forward.normalized)
-            ////{
-            ////    velocity = transform.forward;
-            ////}
 
             rb.AddForce(velocity);
             rb.AddTorque(torque);
 
-            if (Input.GetKeyDown(Fire))
+            if (Input.GetKeyDown(Fire) && canFire)
             {
                 // Fire
-                Instantiate(cannonBall, firePoint);
+                Instantiate(cannonBall, firePoint.transform.position, firePoint.transform.rotation);
+                canFire = false;
+                shotTimer = 1.5f;
             }
         }
         else
