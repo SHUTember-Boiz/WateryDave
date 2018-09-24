@@ -15,6 +15,7 @@ public class cs_GameManager : MonoBehaviour {
     public GameObject g_OptionsPanel;
     public GameObject g_PausePanel;
     public GameObject g_GamePanel;
+    public GameObject g_EndPanel;
 
 
     void Start ()
@@ -49,6 +50,7 @@ public class cs_GameManager : MonoBehaviour {
         g_OptionsPanel.SetActive(false);
         g_PausePanel  .SetActive(false);
         g_GamePanel   .SetActive(true);
+        g_EndPanel    .SetActive(false);
     }
 
 
@@ -59,6 +61,7 @@ public class cs_GameManager : MonoBehaviour {
         g_OptionsPanel.SetActive(true);
         g_PausePanel  .SetActive(false);
         g_GamePanel   .SetActive(false);
+        g_EndPanel    .SetActive(false);
     }
 
     public void MainMenu()
@@ -68,6 +71,7 @@ public class cs_GameManager : MonoBehaviour {
         g_OptionsPanel.SetActive(false);
         g_PausePanel  .SetActive(false);
         g_GamePanel   .SetActive(false);
+        g_EndPanel    .SetActive(false);
     }
 
     public void PauseGame()
@@ -77,6 +81,17 @@ public class cs_GameManager : MonoBehaviour {
         g_OptionsPanel.SetActive(false);
         g_PausePanel  .SetActive(true);
         g_GamePanel   .SetActive(false);
+        g_EndPanel    .SetActive(false);
+    }
+
+    public void EndGame()
+    {
+        gs_CurrentGameState = e_GameState.Paused;
+        g_StartPanel  .SetActive(false);
+        g_OptionsPanel.SetActive(false);
+        g_PausePanel  .SetActive(false);
+        g_GamePanel   .SetActive(false);
+        g_EndPanel    .SetActive(true);
     }
 
     public void PlayerDied(int PlayerID)
