@@ -41,8 +41,6 @@ public class Movement : MonoBehaviour
 
         if (m_GameManager.gs_CurrentGameState == cs_GameManager.e_GameState.GameOn)
         {
-            if (!bouncing)
-            {
                 shotTimer -= Time.deltaTime;
 
                 if (shotTimer < 0 && !canFire)
@@ -92,17 +90,7 @@ public class Movement : MonoBehaviour
                     shotTimer = 1.5f;
                 }
             }
-            else
-            {
-                // Reduce velocity
-
-                if (velocity.magnitude > 0)
-                {
-                    bouncing = false;
-                }
-            }
-        }
-    }
+}
 
     void BounceBack()
     {
@@ -114,7 +102,7 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Obstacle"))
+        if (collision.transform.CompareTag("Obstacle")|| collision.transform.CompareTag("Ship"))
         {
             BounceBack();
             if (playerID == 0)
