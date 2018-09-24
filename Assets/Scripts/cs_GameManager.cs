@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class cs_GameManager : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class cs_GameManager : MonoBehaviour {
     public GameObject g_PausePanel;
     public GameObject g_GamePanel;
     public GameObject g_EndPanel;
+
+    public Text text_EndText;
 
 
     void Start ()
@@ -97,5 +100,14 @@ public class cs_GameManager : MonoBehaviour {
     public void PlayerDied(int PlayerID)
     {
         EndGame();
+        if (PlayerID == 0)
+        {
+            text_EndText.text = "BLUE WON";
+        }
+        else
+        {
+            text_EndText.text = "RED WON";
+
+        }
     }
 }
