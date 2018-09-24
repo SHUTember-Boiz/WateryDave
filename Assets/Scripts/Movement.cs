@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Vector3 velocity, torque;
-    private float maxSpeed = 5, speed = 1f, shotTimer = 0;
+    private float maxSpeed = 5, speed = 10f, shotTimer = 0;
 
     [SerializeField]
     Transform firePoint;
@@ -30,12 +30,23 @@ public class Movement : MonoBehaviour
 
     private AudioSource audioS;
 
+    public float damage = -15;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioS = FindObjectOfType<AudioSource>();
+    }
+
+    public void DoubleSpeed()
+    {
+        speed = 20;
+    }
+
+    public void AddAttack()
+    {
+        damage = -30;
     }
 
     // Update is called once per frame
@@ -58,13 +69,13 @@ public class Movement : MonoBehaviour
                 if (Input.GetKey(Forward))
                 {
                     // Add velocity
-                    velocity -= transform.forward * 10;
+                    velocity -= transform.forward * speed;
                 }
 
                 if (Input.GetKey(Back))
                 {
                     // Reduce velocity
-                    velocity += transform.forward * 10;
+                    velocity += transform.forward * speed;
                 }
 
                 if (Input.GetKey(Left))

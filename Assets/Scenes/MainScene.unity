@@ -847,6 +847,7 @@ MonoBehaviour:
   BlueHealth: {fileID: 773785998}
   RedHealth: {fileID: 1601352877}
   m_GameManager: {fileID: 5659690}
+  damage: -15
 --- !u!54 &403534450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1702,6 +1703,7 @@ MonoBehaviour:
   BlueHealth: {fileID: 773785998}
   RedHealth: {fileID: 1601352877}
   m_GameManager: {fileID: 5659690}
+  damage: -15
 --- !u!54 &757414511
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3990,7 +3992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Options
+  m_Text: Controls
 --- !u!222 &1635633024
 CanvasRenderer:
   m_ObjectHideFlags: 0

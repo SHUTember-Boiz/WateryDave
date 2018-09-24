@@ -12,7 +12,7 @@ public class CannonBall : MonoBehaviour
 
     public GameObject prefab_MushroomOP;
 
-    private const float F_StartDamage = -15.0f;
+    private float f_StartDamage = -15.0f;
     // Use this for initialization
     void Start()
     {
@@ -22,6 +22,8 @@ public class CannonBall : MonoBehaviour
 
         BlueHealth = GameObject.Find("UI_Top_Health_L").transform.GetChild(0).gameObject;
         RedHealth  = GameObject.Find("UI_Top_Health_R").transform.GetChild(0).gameObject;
+
+
     }
 
     // Update is called once per frame
@@ -42,12 +44,14 @@ public class CannonBall : MonoBehaviour
             if (collision.transform.GetComponent<Movement>().playerID == 0)
             {
                 // blue
-                BlueHealth.GetComponent<cs_Health>().updateHealth(F_StartDamage - Random.Range(0,5));
+                f_StartDamage = GameObject.Find("RedShip").GetComponent<Movement>().damage;
+                BlueHealth.GetComponent<cs_Health>().updateHealth(f_StartDamage - Random.Range(0,5));
             }
             else
             {
                 // red
-                RedHealth.GetComponent<cs_Health>().updateHealth(F_StartDamage - Random.Range(0, 5));
+                f_StartDamage = GameObject.Find("BlueShip").GetComponent<Movement>().damage;
+                RedHealth.GetComponent<cs_Health>().updateHealth(f_StartDamage - Random.Range(0, 5));
             }
         }
         Instantiate(prefab_MushroomOP,transform.position,transform.rotation);
