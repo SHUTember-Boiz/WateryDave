@@ -28,11 +28,14 @@ public class Movement : MonoBehaviour
 
     public cs_GameManager m_GameManager;
 
+    private AudioSource audioS;
+
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        audioS = FindObjectOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,6 +91,7 @@ public class Movement : MonoBehaviour
                     Instantiate(cannonBall, firePoint.transform.position, firePoint.transform.rotation);
                     canFire = false;
                     shotTimer = 1.5f;
+                    audioS.Play();
                 }
             }
 }
