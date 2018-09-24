@@ -38,13 +38,13 @@ public class Movement : MonoBehaviour
             if (Input.GetKey(Forward))
             {
                 // Add velocity
-                velocity += transform.forward * 10;
+                velocity -= transform.forward * 10;
             }
 
             if (Input.GetKey(Back))
             {
                 // Reduce velocity
-                velocity -= transform.forward * 10;
+                velocity += transform.forward * 10;
             }
 
             if (Input.GetKey(Left))
