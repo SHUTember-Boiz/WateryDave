@@ -102,11 +102,11 @@ public class cs_GameManager : MonoBehaviour {
         EndGame();
         if (PlayerID == 0)
         {
-            text_EndText.text = "BLUE WON";
+            text_EndText.text = "RED WON";
         }
         else
         {
-            text_EndText.text = "RED WON";
+            text_EndText.text = "BLUE WON";
 
         }
     }
