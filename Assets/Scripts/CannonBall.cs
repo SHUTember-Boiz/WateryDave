@@ -10,6 +10,8 @@ public class CannonBall : MonoBehaviour
     public GameObject BlueHealth;
     public GameObject RedHealth;
 
+    public GameObject prefab_MushroomOP;
+
 
     private const float F_StartDamage = -15.0f;
     // Use this for initialization
@@ -49,7 +51,7 @@ public class CannonBall : MonoBehaviour
                 RedHealth.GetComponent<cs_Health>().updateHealth(F_StartDamage - Random.Range(0, 5));
             }
         }
-
+        Instantiate(prefab_MushroomOP,transform.position,transform.rotation);
 
 
             Destroy(gameObject);
