@@ -5,4 +5,5 @@ Two Players WASD + Arrow keys
 Ship battles
 Two health bars 
 Shoot each other
-Split screen
+Avoid colliding with the map
+Collisions with islands cause damage 
