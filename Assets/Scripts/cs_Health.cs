@@ -13,7 +13,7 @@ public class cs_Health : MonoBehaviour
     private float f_CurrentBarSize = 750.0f;
 
     public int _playerID;
-    private int _health;
+    private float _health;
 
     public GameObject g_Ship;
 
@@ -46,12 +46,12 @@ public class cs_Health : MonoBehaviour
     }
 
 
-    int getHealth()
+    float getHealth()
     {
         return _health;
     }
 
-    void updateHealth(int change)
+    public void updateHealth(float change)
     {
         _health += change;
     }

@@ -96,5 +96,6 @@ public class cs_GameManager : MonoBehaviour {
 
     public void PlayerDied(int PlayerID)
     {
+        EndGame();
     }
 }

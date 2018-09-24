@@ -10,11 +10,17 @@ public class CannonBall : MonoBehaviour
     public GameObject BlueHealth;
     public GameObject RedHealth;
 
+
+    private const float F_StartDamage = -15.0f;
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * 10;
+
+
+        BlueHealth = GameObject.Find("UI_Top_Health_L").transform.GetChild(0).gameObject;
+        RedHealth  = GameObject.Find("UI_Top_Health_R").transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -32,7 +38,19 @@ public class CannonBall : MonoBehaviour
     {
         if (collision.transform.CompareTag("Ship"))
         {
+            if (collision.transform.GetComponent<Movement>().playerID == 0)
+            {
+                // blue
+                BlueHealth.GetComponent<cs_Health>().updateHealth(F_StartDamage - Random.Range(0,5));
+            }
+            else
+            {
+                // red
+                RedHealth.GetComponent<cs_Health>().updateHealth(F_StartDamage - Random.Range(0, 5));
+            }
         }
+
+
 
             Destroy(gameObject);
 
