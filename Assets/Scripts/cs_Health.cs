@@ -10,19 +10,21 @@ public class cs_Health : MonoBehaviour
     public RectTransform g_HealthObject;
 
     private const float F_MaxBarSize = 750.0f;
-    private float   f_CurrentBarSize = 750.0f;
+    private float f_CurrentBarSize = 750.0f;
 
     public int _playerID;
     private int _health;
 
+    public GameObject g_Ship;
 
-    void Start ()
+
+    void Start()
     {
         _health = 100;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         // If the game is ons
         if (m_GameManager.gs_CurrentGameState == cs_GameManager.e_GameState.GameOn)
@@ -34,7 +36,7 @@ public class cs_Health : MonoBehaviour
                 m_GameManager.PlayerDied(_playerID);
             }
         }
-	}
+    }
 
     private void SetHealthBar()
     {
@@ -52,8 +54,6 @@ public class cs_Health : MonoBehaviour
     void updateHealth(int change)
     {
         _health += change;
-        if (isDead())
-            endGame(_playerID);
     }
 
     bool isDead()
@@ -62,10 +62,5 @@ public class cs_Health : MonoBehaviour
             return false;
         else
             return true;
-    }
-
-    void endGame(int playerID)
-    {
-        //DO SOMETHING
     }
 }
