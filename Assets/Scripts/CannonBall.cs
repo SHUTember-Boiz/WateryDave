@@ -12,7 +12,6 @@ public class CannonBall : MonoBehaviour
 
     public GameObject prefab_MushroomOP;
 
-
     private const float F_StartDamage = -15.0f;
     // Use this for initialization
     void Start()
@@ -52,7 +51,6 @@ public class CannonBall : MonoBehaviour
             }
         }
         Instantiate(prefab_MushroomOP,transform.position,transform.rotation);
-
 
             Destroy(gameObject);
 
