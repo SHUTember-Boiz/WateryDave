@@ -7,6 +7,9 @@ public class CannonBall : MonoBehaviour
     private Rigidbody rb;
     private float timer = 0;
 
+    public GameObject BlueHealth;
+    public GameObject RedHealth;
+
     // Use this for initialization
     void Start()
     {
@@ -23,5 +26,15 @@ public class CannonBall : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Ship"))
+        {
+        }
+
+            Destroy(gameObject);
+
     }
 }

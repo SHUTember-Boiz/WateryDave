@@ -20,6 +20,8 @@ public class Movement : MonoBehaviour
 
     private Rigidbody rb;
 
+    public int playerID;
+
     // Use this for initialization
     void Start()
     {
